@@ -1,6 +1,8 @@
+import './Task.css'
+
 function Task({ key, task }) {
   return (
-    <li key={ key } className="task">{ task }</li>
+    <p className="task" key={ key } className="task">{ task.task }</p>
   );
 }
 

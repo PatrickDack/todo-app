@@ -1,3 +1,5 @@
+import './Input.css'
+
 function Input(props) {
   return (
     <input
@@ -6,6 +8,7 @@ function Input(props) {
       value={ props.value }
       placeholder={ props.place }
       onChange={ props.onChange }
+      className={ props.className }
     />
   );
 }
