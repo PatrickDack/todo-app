@@ -1,21 +1,29 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from './components/Button';
 import Input from './components/Input';
 import TaskCard from './components/TaskCard';
 import Header from './components/Header';
 
-const API_URL = `http://localhost:3000/create`;
+
+const API_URL_TASK = `http://localhost:3000/tasks`;
 
 const saveTask = async (task) => {
-  await axios.post(API_URL, { task });
+  await axios.post(API_URL_TASK, { task });
 };
+
+const getTasks = async () => axios.get(API_URL_TASK);
 
 
 function App() {
   const [task, setTask] = useState('')
   const [tasks, setTasks] = useState([]);
+
+  useEffect(async () => {
+    const dataTasks = await getTasks();
+    setTasks(dataTasks);
+  }, []);
 
   const handleChange = ({ target }) => {
     setTask(target.value);
