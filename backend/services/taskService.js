@@ -12,8 +12,8 @@ const getAll = async () => {
   return tasks;
 };
 
-const remove = async (task) => {
-  await taskModel.remove(task);
+const remove = async (id) => {
+  await taskModel.remove(id);
 }
 
 module.exports = {

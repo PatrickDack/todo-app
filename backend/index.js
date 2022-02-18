@@ -15,7 +15,7 @@ app.use(
 
 app.get('/tasks', taskController.getAll);
 app.post('/tasks', taskController.create);
-app.delete('/tasks', taskController.remove);
+app.delete('/tasks/delete/:id', taskController.remove);
 
 
 app.listen(PORT, () => { console.log(`Listening on PORT ${PORT}`) });

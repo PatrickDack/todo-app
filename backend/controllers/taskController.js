@@ -1,4 +1,3 @@
-const res = require('express/lib/response');
 const taskService = require('../services/taskService');
 
 const create = async (req, res, _next) => {
@@ -24,11 +23,10 @@ const getAll = async (req, res, _next) => {
 }
 
 const remove = async (req, res, _next) => {
-  const task = req.body;
-  console.log(task);
+  const { id } = req.params;
 
   try {
-    await taskService.remove(task);
+    await taskService.remove(id);
 
     return res.status(204).json({ message: "Task has been deleted successfully"});
   } catch (error) {

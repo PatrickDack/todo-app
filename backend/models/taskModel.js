@@ -1,8 +1,14 @@
+const { ObjectId } = require('mongodb');
 const connection = require('./connection');
 
 const create = async (task) => {
-  return connection()
+  const newTask = await connection()
     .then((db) => db.collection('tasks').insertOne(task));
+
+  const { insertedId } = newTask;
+
+  return connection()
+    .then((db) => db.collection('tasks').findOne({ _id: ObjectId(insertedId)}));
 };
 
 const getAll = async () => {
@@ -10,10 +16,9 @@ const getAll = async () => {
     .then((db) => db.collection('tasks').find().toArray());
 };
 
-const remove = async (task) => {
-  console.log(task);
+const remove = async (id) => {
   await connection()
-    .then((db) => db.collection('tasks').deleteOne(task));
+    .then((db) => db.collection('tasks').deleteOne({ _id: ObjectId(id) }));
 }
 
 module.exports = {

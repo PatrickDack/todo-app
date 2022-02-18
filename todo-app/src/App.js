@@ -10,12 +10,14 @@ import Header from './components/Header';
 const API_URL_TASK = `http://localhost:3000/tasks`;
 
 const saveTask = async (task) => {
-  await axios.post(API_URL_TASK, { task });
+  const { data } = await axios.post(API_URL_TASK, { task });
+
+  return data;
 };
 
 const getTasks = async () => axios.get(API_URL_TASK);
 
-const deleteTask = async (task) => axios.delete(API_URL_TASK, task);
+const deleteTask = async (id) => axios.delete(`${API_URL_TASK}/delete/${id}`);
 
 
 function App() {
@@ -33,15 +35,17 @@ function App() {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    await saveTask(task)
-    task && setTasks([...tasks, { task }]);
+    const newTask = task && await saveTask(task)
+    task && setTasks([...tasks, newTask ]);
     setTask('');
   }
 
   const handleDeleteTask = async (e) => {
-    const filteredTasks = tasks.filter((task) => task.task !== e.target.innerText);
-    await deleteTask({ task: e.target.innerText })
-    setTasks(filteredTasks);
+    const [filteredTask] = tasks.filter((task) => task.task == e.target.innerText);
+    await deleteTask(filteredTask._id);
+
+    const { data } = await getTasks();
+    setTasks(data);
   }
 
   return (
