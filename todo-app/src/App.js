@@ -15,6 +15,8 @@ const saveTask = async (task) => {
 
 const getTasks = async () => axios.get(API_URL_TASK);
 
+const deleteTask = async (task) => axios.delete(API_URL_TASK, task);
+
 
 function App() {
   const [task, setTask] = useState('')
@@ -36,8 +38,9 @@ function App() {
     setTask('');
   }
 
-  const handleDeleteTask = (e) => {
+  const handleDeleteTask = async (e) => {
     const filteredTasks = tasks.filter((task) => task.task !== e.target.innerText);
+    await deleteTask({ task: e.target.innerText })
     setTasks(filteredTasks);
   }
 

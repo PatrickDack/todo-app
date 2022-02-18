@@ -23,8 +23,22 @@ const getAll = async (req, res, _next) => {
   }
 }
 
+const remove = async (req, res, _next) => {
+  const task = req.body;
+  console.log(task);
+
+  try {
+    await taskService.remove(task);
+
+    return res.status(204).json({ message: "Task has been deleted successfully"});
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
 
 module.exports = {
   create,
   getAll,
+  remove,
 };

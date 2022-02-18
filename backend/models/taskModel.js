@@ -10,7 +10,14 @@ const getAll = async () => {
     .then((db) => db.collection('tasks').find().toArray());
 };
 
+const remove = async (task) => {
+  console.log(task);
+  await connection()
+    .then((db) => db.collection('tasks').deleteOne(task));
+}
+
 module.exports = {
   create,
   getAll,
+  remove,
 };
