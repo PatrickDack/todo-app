@@ -1,3 +1,4 @@
+const res = require('express/lib/response');
 const taskService = require('../services/taskService');
 
 const create = async (req, res, _next) => {
@@ -12,7 +13,18 @@ const create = async (req, res, _next) => {
   }
 };
 
+const getAll = async (req, res, _next) => {
+  try {
+    const tasks = await taskService.getAll();
+
+    return res.status(200).json(tasks);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
 
 module.exports = {
   create,
+  getAll,
 };

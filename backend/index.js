@@ -12,7 +12,9 @@ app.use(
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   })
 );
-app.use('/create', taskController.create);
+
+app.get('/tasks', taskController.getAll);
+app.post('/tasks', taskController.create);
 
 
 app.listen(PORT, () => { console.log(`Listening on PORT ${PORT}`) });

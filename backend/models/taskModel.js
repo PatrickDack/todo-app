@@ -5,6 +5,12 @@ const create = async (task) => {
     .then((db) => db.collection('tasks').insertOne(task));
 };
 
+const getAll = async () => {
+  return connection()
+    .then((db) => db.collection('tasks').find().toArray());
+};
+
 module.exports = {
   create,
+  getAll,
 };

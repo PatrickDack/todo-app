@@ -21,8 +21,8 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(async () => {
-    const dataTasks = await getTasks();
-    setTasks(dataTasks);
+    const { data } = await getTasks();
+    setTasks(data);
   }, []);
 
   const handleChange = ({ target }) => {

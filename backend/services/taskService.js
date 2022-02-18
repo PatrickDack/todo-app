@@ -6,6 +6,13 @@ const create = async (task) => {
   return newTask;
 };
 
+const getAll = async () => {
+  const tasks = await taskModel.getAll();
+
+  return tasks;
+};
+
 module.exports = {
   create,
+  getAll,
 };
