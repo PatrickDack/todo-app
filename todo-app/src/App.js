@@ -36,6 +36,8 @@ function App() {
     setTask('');
   }
 
+  const handleDeleteTask;
+
   return (
     <div className="main-container">
       <Header/>
