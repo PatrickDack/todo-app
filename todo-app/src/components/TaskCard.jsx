@@ -11,7 +11,7 @@ function TaskCard(props) {
     >
       {
         props.render
-          .map((task, index) => <Task key={ index } task={ task }/>)
+          .map((task, index) => <Task key={ index } task={ task } onClick={ props.fn }/>)
       }
     </div>
   );

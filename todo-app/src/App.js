@@ -36,12 +36,15 @@ function App() {
     setTask('');
   }
 
-  const handleDeleteTask;
+  const handleDeleteTask = (e) => {
+    const filteredTasks = tasks.filter((task) => task.task !== e.target.innerText);
+    setTasks(filteredTasks);
+  }
 
   return (
     <div className="main-container">
       <Header/>
-      <TaskCard className="task-card"render={ tasks } />
+      <TaskCard className="task-card" render={ tasks } fn={ handleDeleteTask }/>
       <div className='input-container'>
         <Input
           className="input-task"
