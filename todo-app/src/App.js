@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from './components/Button';
 import Input from './components/Input';
-import TaskCard from './components/TaskCard';
+import TaskCard from './components/TaskCard/index';
 import Header from './components/Header';
 
 

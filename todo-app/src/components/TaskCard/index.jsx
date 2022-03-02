@@ -1,4 +1,4 @@
-import Task from './Task';
+import Task from '../Task';
 import './TaskCard.css'
 
 function TaskCard(props) {

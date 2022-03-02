@@ -1,5 +1,5 @@
 import './Task.css';
-import DeleteButton from './deleteButton/DeleteButton';
+import DeleteButton from '../DeleteButton';
 
 function Task({ task, key, onClick }) {
   return (
