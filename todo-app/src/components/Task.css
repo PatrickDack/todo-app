@@ -5,6 +5,7 @@
   color: whitesmoke;
   display: flex;
   height: 45px;
+  justify-content: space-between;
   list-style: none;
   margin: 5px 0;
   padding-left: 35px;

@@ -40,9 +40,8 @@ function App() {
     setTask('');
   }
 
-  const handleDeleteTask = async (e) => {
-    const [filteredTask] = tasks.filter((task) => task.task == e.target.innerText);
-    await deleteTask(filteredTask._id);
+  const handleDeleteTask = async (id) => {
+    await deleteTask(id);
 
     const { data } = await getTasks();
     setTasks(data);
